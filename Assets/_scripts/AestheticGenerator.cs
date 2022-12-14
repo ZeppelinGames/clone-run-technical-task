@@ -18,16 +18,20 @@ public class AestheticGenerator : Singleton<AestheticGenerator>
     float travelledDistance;
     float lastLocation;
 
-    List<GameObject> aestheticSquares = new List<GameObject>();
+    //List<GameObject> aestheticSquares = new List<GameObject>();
+    GameObjectPooler aestheticSquares = new GameObjectPooler();
+
     float aestheticBehindToRegenDistance = 15f;
 
     void Start()
     {
-        currentCreationRange = Random.Range(creationRangeBounds.x, creationRangeBounds.y);
+        aestheticSquares.poolPrefab = aestheticPrefab;
+        GameController.OnGameStart.AddListener(ResetAesthetics);
     }
 
     void Update()
     {
+        //swapping to cloned player
         if (activePlayer == null)
         {
             return;
@@ -39,7 +43,7 @@ public class AestheticGenerator : Singleton<AestheticGenerator>
         if (travelledDistance > currentCreationRange)
         {
             GenerateAesthetic();
-            travelledDistance -= currentCreationRange;
+            travelledDistance = 0;
         }
 
         lastLocation = activePlayer.transform.position.x;
@@ -53,15 +57,8 @@ public class AestheticGenerator : Singleton<AestheticGenerator>
     void GenerateAesthetic()
     {
         //Try get pooled square
-        GameObject newAesthetic = GetPooledSquare();
-
-        //No pooled squares avaliable. generate new
-        if (newAesthetic == null)
-        {
-            newAesthetic = GameObject.Instantiate(aestheticPrefab);
-            aestheticSquares.Add(newAesthetic);
-            newAesthetic.transform.SetParent(transform);
-        }
+        GameObject newAesthetic = aestheticSquares.GetFromPool();
+        newAesthetic.transform.SetParent(transform);
 
         currentCreationRange = Random.Range(creationRangeBounds.x, creationRangeBounds.y);
         newAesthetic.transform.position = new Vector3(lastLocation + xDistanceInFront, Random.Range(yRange.x, yRange.y), 0f);
@@ -71,22 +68,6 @@ public class AestheticGenerator : Singleton<AestheticGenerator>
 
         float rot = Random.Range(rotationRange.x, rotationRange.y);
         newAesthetic.transform.localRotation = Quaternion.Euler(0f, 0f, rot);
-    }
-
-    GameObject GetPooledSquare()
-    {
-        //Loop squares
-        for (int i = 0; i < aestheticSquares.Count; i++)
-        {
-            //See if square is inactive in scene
-            if (!aestheticSquares[i].activeInHierarchy)
-            {
-                return aestheticSquares[i];
-            }
-        }
-
-        //No inactive squares found
-        return null;
     }
 
     void CleanAestheticSquares()
@@ -101,7 +82,6 @@ public class AestheticGenerator : Singleton<AestheticGenerator>
                 aestheticSquares[i].SetActive(false);
             }
         }
-
     }
 
     public IEnumerator CleanAllAestheticSquaresAfterDelay(float delay = 0.35f)
@@ -119,6 +99,14 @@ public class AestheticGenerator : Singleton<AestheticGenerator>
             aestheticSquares.RemoveAt(i);*/
             aestheticSquares[i].SetActive(false);
         }
+    }
+
+    void ResetAesthetics()
+    {
+        currentCreationRange = Random.Range(creationRangeBounds.x, creationRangeBounds.y);
+        travelledDistance = 0;
+        lastLocation = 0;
+        CleanAestheticSquares();
     }
 
     public void SetActivePlayer(Player p)
