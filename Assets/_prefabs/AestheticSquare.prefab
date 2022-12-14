@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 9160918422936351212}
   m_Layer: 0
   m_Name: Mask
-  m_TagString: Ground
+  m_TagString: Aesthetic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -8,7 +8,8 @@ public class ContinueMenu : MonoBehaviour
 {
     [SerializeField] MenuControl menuControlRef_;
 
-    float rewardTime = (20f + 5f);
+    //Make adjustable from inspector for designers
+    [SerializeField] private float rewardTime = 5f;
     float rewardTimer;
 
     [SerializeField] TextMeshProUGUI timerText;
