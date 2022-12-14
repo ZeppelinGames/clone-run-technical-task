@@ -4178,6 +4178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuControlRef_: {fileID: 2007644470}
+  rewardTime: 5
   timerText: {fileID: 1624612757}
   timerImage: {fileID: 869069333}
   continueScore: 0

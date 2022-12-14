@@ -58,7 +58,6 @@ public class AestheticGenerator : Singleton<AestheticGenerator>
         //No pooled squares avaliable. generate new
         if (newAesthetic == null)
         {
-
             newAesthetic = GameObject.Instantiate(aestheticPrefab);
             aestheticSquares.Add(newAesthetic);
             newAesthetic.transform.SetParent(transform);
