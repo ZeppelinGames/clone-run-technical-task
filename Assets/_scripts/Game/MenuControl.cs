@@ -162,7 +162,8 @@ public class MenuControl : MonoBehaviour
         if(menuOptionShown == 1){
             menuOptionShown = 0;
             creditsCanvas.interactable = false;
-        }else{
+        }
+        else{
             menuOptionShown = 1;
             creditsCanvas.interactable = true;
         }
@@ -180,6 +181,7 @@ public class MenuControl : MonoBehaviour
     }
 
     public void PrivacyPolicy(){
+        Debug.Log("Opening privacy policy");
         Application.OpenURL("http://studios.nomoss.co/privacy");
     }
 
