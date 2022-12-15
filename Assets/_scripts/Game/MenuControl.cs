@@ -181,7 +181,6 @@ public class MenuControl : MonoBehaviour
     }
 
     public void PrivacyPolicy(){
-        Debug.Log("Opening privacy policy");
         Application.OpenURL("http://studios.nomoss.co/privacy");
     }
 

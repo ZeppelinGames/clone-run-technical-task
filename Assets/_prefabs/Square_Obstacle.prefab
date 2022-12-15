@@ -171,6 +171,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!58 &2227149499465607218
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8080904141584109259}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1001 &895203313174335360
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -196,6 +212,11 @@ PrefabInstance:
     - target: {fileID: 638690721734956575, guid: 1b9cdacbeac2645d5b497fe8d8d0077d,
         type: 3}
       propertyPath: yPositionOffset.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 863830314308231333, guid: 1b9cdacbeac2645d5b497fe8d8d0077d,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 863830314308231333, guid: 1b9cdacbeac2645d5b497fe8d8d0077d,
@@ -295,6 +316,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b9cdacbeac2645d5b497fe8d8d0077d, type: 3}
+--- !u!1 &8080904141584109259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8955765385200189771, guid: 1b9cdacbeac2645d5b497fe8d8d0077d,
+    type: 3}
+  m_PrefabInstance: {fileID: 895203313174335360}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8080904141584109262 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8955765385200189774, guid: 1b9cdacbeac2645d5b497fe8d8d0077d,

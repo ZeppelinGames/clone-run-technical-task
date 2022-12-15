@@ -68,7 +68,6 @@ public class AestheticGenerator : Singleton<AestheticGenerator>
 
         float rot = Random.Range(rotationRange.x, rotationRange.y);
         newAesthetic.transform.localRotation = Quaternion.Euler(0f, 0f, rot);
-        newAesthetic.SetActive(true);
     }
 
     void CleanAestheticSquares()

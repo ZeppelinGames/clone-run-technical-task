@@ -48,4 +48,9 @@ public class PlayFabManager : PersistentSingleton<PlayFabManager>
         WriteSimpleEvent("player_closed_app", null);
         base.OnDestroy();
     }
+
+    private void OnApplicationQuit()
+    {
+        WriteSimpleEvent("player_closed_app", null);
+    }
 }

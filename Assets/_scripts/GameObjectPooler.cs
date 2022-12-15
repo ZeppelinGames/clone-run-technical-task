@@ -14,6 +14,9 @@ public class GameObjectPooler : List<GameObject>
         {
             newGO = GameObject.Instantiate(poolPrefab);
             this.Add(newGO);
+        } else
+        {
+            newGO.SetActive(true);
         }
 
         return newGO;
